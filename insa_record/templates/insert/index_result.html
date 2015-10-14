@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="euc-kr">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Theme Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap theme -->
+    <link href="dist/css/bootstrap-theme.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="theme.css" rel="stylesheet">
+	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+  </head>
+<script>
+$(function(){
+	
+	$('#pagerow').css('overflow','scroll');
+});
+</script>
+  <body role="document">
+    <div class="container theme-showcase" role="main">
+      <div class="page-header">
+        <h1>윌스기념병원</h1>
+      </div>
+      <div class="row" id="pagerow">
+	  
+      
+        <div style="float:left">
+          <table class="table table-bordered" >
+            
+            <tbody>
+              <tr>
+                <td rowspan="7" style="">본<br><br><br><br>인</td>
+                <td>성명</td>
+                <td>한글</td>
+				<td><input type="text" name="nm" id="nm" value=""/></td>
+                <td>영문</td>
+				<td colspan="3">..</td>
+              </tr>
+              <tr>
+                <td>주민등록번호</td>
+                <td colspan="2">851120-1800518</td>
+                <td>성별</td>
+				<td>남</td>
+				<td>결혼여부</td>
+				<td>미혼&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+              </tr>
+			  <tr>
+                <td>생년월일</td>
+                <td><select><option>양력</option><option>음력</option></select></td>
+                <td>
+					<input type="text" name="byear" id="byear" style="width:50px"/>년
+					<select>
+						<option>1월</option>
+						<option>2월</option>
+						<option>3월</option>
+						<option>4월</option>
+						<option>5월</option>
+						<option>6월</option>
+						<option>7월</option>
+						<option>8월</option>
+						<option>9월</option>
+						<option>10월</option>
+						<option>11월</option>
+						<option>12월</option>
+					</select>월
+					<input type="text" name="bday" id="bday" style="width:50px"/>일</td>
+				<td>이메일</td>
+				<td colspan="3">..</td>
+              </tr>
+			  <tr>
+                <td>주소(주민등록)</td>
+                <td colspan="6">Otto</td>
+              </tr>
+			  <tr>
+                <td>주소(실거주지)</td>
+                <td colspan="6">Otto</td>
+              </tr>
+			  <tr>
+                <td>전화번호</td>
+                <td colspan="2">Otto</td>
+                <td>세대주</td>
+				<td colspan="3"></td>
+              </tr>
+			  <tr>
+                <td>핸드폰</td>
+                <td colspan="2">Otto</td>
+                <td>주거형태</td>
+				<td colspan="3">..</td>
+              </tr>
+			  <tr>
+                <td rowspan="2">보훈<br>장애</td>
+                <td>장애유형</td>
+                <td>장애등급</td>
+				<td>장애인정시기</td>
+				<td>보훈번호</td>
+				<td colspan="3">보훈구분</td>
+              </tr>
+			  <tr>
+				<td>..</td>
+                <td>..</td>
+				<td>..</td>
+				<td>..</td>
+				<td colspan="3">..</td>
+			  </tr>
+              <tr>
+                <td rowspan="2">병 역</td>
+                <td>병역구분</td>
+                <td>
+					<select>
+						<option>기필</option>
+						<option>미필</option>
+						<option>면제</option>
+					</select>
+				</td>
+                <td>군별</td>
+				<td></td>
+				<td>병과</td>
+				<td colspan="2"></td>
+              </tr>
+			  <tr>
+				<td>면제사유</td>
+				<td colspan="3">..</td>
+				<td>계급</td>
+				<td colspan="2">..</td>
+			  </tr>
+              <tr>
+                <td rowspan="6">가족<br>관계</td>
+                <td>관계</td>
+                <td>성명</td>
+				<td>생년월일</td>
+				<td>학력</td>
+				<td colspan="2">직장명</td>
+				<td>동거여부</td>
+              </tr>
+			  <tr>
+                <td>..</td>
+                <td>..</td>
+				<td>..</td>
+				<td>..</td>
+				<td colspan="2">..</td>
+				<td>..</td>
+              </tr>
+			  <tr>
+                <td>..</td>
+                <td>..</td>
+				<td>..</td>
+				<td>..</td>
+				<td colspan="2">..</td>
+				<td>..</td>
+              </tr>
+			  <tr>
+                <td>..</td>
+                <td>..</td>
+				<td>..</td>
+				<td>..</td>
+				<td colspan="2">..</td>
+				<td>..</td>
+              </tr>
+			  <tr>
+                <td>..</td>
+                <td>..</td>
+				<td>..</td>
+				<td>..</td>
+				<td colspan="2">..</td>
+				<td>..</td>
+              </tr>
+			  <tr>
+                <td>..</td>
+                <td>..</td>
+				<td>..</td>
+				<td>..</td>
+				<td colspan="2">..</td>
+				<td>..</td>
+              </tr>
+			  <tr>
+				<td rowspan="5">면허 <br> 자격</td>
+                <td>자격, 면허명</td>
+                <td>면허번호</td>
+				<td>취득일</td>
+				<td colspan="3">발행처명</td>
+				<td>비고</td>
+              </tr>
+			  <tr>
+                <td>..</td>
+				<td>..</td>
+				<td>..</td>
+				<td colspan="3">..</td>
+				<td>..</td>
+              </tr>
+			  <tr>
+                <td>..</td>
+				<td>..</td>
+				<td>..</td>
+				<td colspan="3">..</td>
+				<td>..</td>
+              </tr>
+			  <tr>
+                <td>..</td>
+				<td>..</td>
+				<td>..</td>
+				<td colspan="3">..</td>
+				<td>..</td>
+              </tr>
+			  <tr>
+                <td>..</td>
+				<td>..</td>
+				<td>..</td>
+				<td colspan="3">..</td>
+				<td>..</td>
+              </tr>
+			  <tr>
+				<td rowspan="3">외국어</td>
+                <td>언어</td>
+                <td>구사능력</td>
+				<td>점수</td>
+				<td colspan="3">공인시험</td>
+				<td>취득일</td>
+              </tr>
+			  <tr>
+                <td>..</td>
+				<td>..</td>
+				<td>..</td>
+				<td colspan="3">..</td>
+				<td>..</td>
+              </tr>
+			  <tr>
+                <td>..</td>
+				<td>..</td>
+				<td>..</td>
+				<td colspan="3">..</td>
+				<td>..</td>
+              </tr>
+			  <tr>
+                <td rowspan="2">비상<br>연락</td>
+				<td>성명</td>
+				<td colspan="2">..</td>
+				<td>관계</td>
+				<td colspan="3">..</td>
+              </tr>
+			  <tr>
+				<td>주소</td>
+				<td colspan="2">..</td>
+				<td>핸드폰</td>
+				<td colspan="3">..</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+		<div>
+          <table class="table table-bordered" >
+           
+            <tbody>
+              <tr>
+                <td rowspan="7">본인</td>
+                <td>성명</td>
+                <td>한글</td>
+                <td>@mdo</td>
+              </tr>
+              <tr>
+                <td>주민등록번호</td>
+                <td>Otto</td>
+                <td>@TwBootstrap</td>
+              </tr>
+			  <tr>
+                <td>생년월일</td>
+                <td>Otto</td>
+                <td>@TwBootstrap</td>
+              </tr>
+			  <tr>
+                <td>주소(주민등록)</td>
+                <td>Otto</td>
+                <td>@TwBootstrap</td>
+              </tr>
+			  <tr>
+                <td>주소(실거주지)</td>
+                <td>Otto</td>
+                <td>@TwBootstrap</td>
+              </tr>
+			  <tr>
+                <td>전화번호</td>
+                <td>Otto</td>
+                <td>@TwBootstrap</td>
+              </tr>
+			  <tr>
+                <td>핸드폰</td>
+                <td>Otto</td>
+                <td>@TwBootstrap</td>
+              </tr>
+			  <tr>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@TwBootstrap</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td colspan="2">Larry the Bird</td>
+                <td>@twitter</td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+    </div> <!-- /container 
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="dist/js/bootstrap.min.js"></script>
+    <script src="assets/js/docs.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

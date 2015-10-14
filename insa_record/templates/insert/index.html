@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>윌스기념병원 인사기록카드</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+    <!-- Bootstrap theme -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.2/moment-with-locales.min.js"></script>
+
+<script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>    
+  </head>
+<script>
+$(function(){
+{% if insaform.employ_type.value != 0 %}
+	$("input:radio[name=employ_type]:radio[value='{{ insaform.employ_type.value }}']").attr("checked",true);
+{% endif %}
+	$('#pagerow').css('overflow-x','scroll');
+	$( ".datepicker" ).datepicker({
+      changeMonth: true,
+      changeYear: true,
+	currentText: '오늘 날짜', 
+      closeText: '닫기', 
+      dateFormat:"yy-mm-dd",
+	dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
+         dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], 
+         monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
+         monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월']
+      // You can put more options here.
+
+    });
+});
+</script>
+  <body role="document">
+	<div id="pagerow" style="padding-left:20px" role="main">
+      <div class="page-header">
+        <h1>윌스기념병원</h1>
+      </div>
+{% block content %}
+
+	{% if myid %}
+	<form action="{% url 'detail' myid %}" method="POST" enctype="multipart/form-data">
+	{% else %}
+	<form action="{% url 'insert' %}" method="POST" enctype="multipart/form-data">
+	{% endif %}
+	{% csrf_token %}	
+      <div class="row" style="width:1500px">	  
+        <span style="float:left">
+          <table class="table table-bordered" >            
+            <tbody>
+              <tr>
+                <td rowspan="7" style="">본<br><br><br><br>인</td>
+                <td>성명</td>
+                <td>한글</td>
+				<td>{{ insaform.name_kor }}</td>
+                <td>영문</td>
+				<td colspan="3">{{ insaform.name_eng }}</td>
+              </tr>
+              <tr>
+                <td>주민등록번호</td>
+                <td colspan="2">{{ insaform.civil_code }}</td>
+                <td>성별</td>
+				<td>
+					{{ insaform.gender }}
+				</td>				
+				<td>결혼여부</td>
+				<td>
+					{{ insaform.married }}
+				</td>
+              </tr>
+			  <tr>
+                <td>생년월일</td>
+                <td>
+					{{ insaform.birthday_type }}
+				</td>
+                <td>
+					
+		{{ insaform.birthday }}
+</td>
+				<td>이메일</td>
+				<td colspan="3">{{ insaform.email }}</td>
+              </tr>
+			  <tr>
+                <td>주소(주민등록)</td>
+                <td colspan="6">{{ insaform.address_civil }}</td>
+              </tr>
+			  <tr>
+                <td>주소(실거주지)</td>
+                <td colspan="6">{{ insaform.address_live }}</td>
+              </tr>
+			  <tr>
+                <td>전화번호</td>
+                <td colspan="2">{{ insaform.phone }}</td>
+                <td>세대주</td>
+				<td colspan="3">{{ insaform.head_house }}</td>
+              </tr>
+			  <tr>
+                <td>핸드폰</td>
+                <td colspan="2">{{ insaform.mobile_phone }}</td>
+                <td>주거형태</td>
+				<td colspan="3">
+					{{insaform.house_type}}
+				</td>
+              </tr>
+			  <tr>
+                <td rowspan="2">보훈<br>장애</td>
+                <td>장애유형</td>
+                <td>장애등급</td>
+				<td>장애인정시기</td>
+				<td>보훈번호</td>
+				<td colspan="3">보훈구분</td>
+              </tr>
+			  <tr>
+				<td>{{insaform.handicap_type}}</td>
+                <td>{{insaform.handicap_grade}}</td>
+				<td>{{insaform.handicap_trial}}</td>
+				<td>{{insaform.handicap_num}}</td>
+				<td colspan="3">{{insaform.handicap_div}}</td>
+			  </tr>
+              <tr>
+                <td rowspan="2">병<br>역</td>
+                <td>병역구분</td>
+                <td>
+					{{ insaform.military_serve }}
+				</td>
+                <td>군별</td>
+				<td>
+					{{ insaform.military_type }}
+				</td>
+				<td>병과</td>
+				<td colspan="2">
+					{{ insaform.military_branch }}
+				</td>
+              </tr>
+			  <tr>
+				<td>면제사유</td>
+				<td colspan="3">{{ insaform.military_exampt }}</td>
+				<td>계급</td>
+				<td colspan="2">{{ insaform.military_class }}</td>
+			  </tr>
+
+
+              <tr>
+                <td rowspan="6">가<br>족<br>관<br>계</td>
+                <td>관계</td>
+                <td>성명</td>
+				<td>생년월일</td>
+				<td>학력</td>
+				<td colspan="2">직장명</td>
+				<td>동거여부</td>
+              </tr>
+              	
+        		{{ fform.management_form }}
+				{% for i in fform %}
+				{{ i.id }}
+			  <tr>
+                <td>{{ i.family_relation }}</td>
+                <td>{{ i.family_name }}</td>
+				<td>{{ i.family_birthday }}</td>
+				<td>{{ i.family_academic }}</td>
+				<td colspan="2">{{ i.family_job }}</td>
+				<td>{{ i.family_together }}</td>
+              </tr>
+				{% endfor %}
+			  <tr>
+				<td rowspan="5">면<br>허<br>자<br>격</td>
+                <td>자격, 면허명</td>
+                <td>면허번호</td>
+				<td>취득일</td>
+				<td colspan="3">발행처명</td>
+				<td>비고</td>
+              </tr>
+              {{ license.management_form }}
+              {% for i in license %}
+              {{ i.id }}
+			  <tr>
+                <td>{{ i.license_title }}</td>
+				<td>{{ i.license_number }}</td>
+				<td>{{ i.license_getday }}</td>
+				<td colspan="3">{{ i.license_organization }}</td>
+				<td>{{ i.license_etc }}</td>
+              </tr>
+			  {% endfor %}
+			  <tr>
+				<td rowspan="3">외<br>국<br>어</td>
+                <td>언어</td>
+                <td>구사능력</td>
+				<td>취득일</td>
+				<td colspan="3">공인시험</td>
+				<td>점수</td>
+              </tr>
+              {{ lang.management_form }}
+              {% for i in lang %}
+              {{ i.id }}
+			  <tr>
+                <td>{{ i.lang_language }}</td>
+				<td>{{ i.lang_grade }}</td>
+				<td>{{ i.lang_getday }}</td>
+				<td colspan="3">{{ i.lang_pubtest }}</td>
+				<td>{{ i.lang_score }}</td>
+              </tr>
+			  {% endfor %}
+			  <tr>
+                <td rowspan="2">비상<br>연락</td>
+				<td>성명</td>
+				<td colspan="2">{{ insaform.emergency_name }}</td>
+				<td>관계</td>
+				<td colspan="3">{{ insaform.emergency_rel }}</td>
+              </tr>
+			  <tr>
+				<td>주소</td>
+				<td colspan="2">{{ insaform.emergency_address }}</td>
+				<td>핸드폰</td>
+				<td colspan="3">{{ insaform.emergency_call }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </span>
+		<span style="float:left">
+          <table class="table table-bordered">
+            <tbody>
+              <tr style="width:50px">
+                <td rowspan="6">채용</td>
+                <td>입사일자</td>
+                <td colspan="3">{{ insaform.employ_day }}</td>
+                <td rowspan="6">
+				{% if myid %}
+				<img src="/uploads/{{ insaform.info_image.value }}" style="width:200px;height:200px"/>
+				<br>
+				{{ insaform.info_image }}
+				{% else %}
+				{{ insaform.info_image }}
+				{% endif %}
+				</td>
+              </tr>
+              <tr>
+                <td>부서명</td>
+                <td>{{ insaform.employ_part }}</td>
+                <td>직종</td>
+				<td>{{ insaform.employ_kind }}</td>
+              </tr>
+			  <tr id="tr_empl1">
+                <td rowspan="4">입사형태</td>
+                <td><input id="employ_type_0" name="employ_type" type="radio" value="1"> 정규직</td>
+                <td><input id="employ_type_1" name="employ_type" type="radio" value="2"> 계약직</td>
+				<td><input id="employ_type_2" name="employ_type" type="radio" value="3"> 공개채용</td>
+              </tr>
+		<tr id="tr_empl2">
+                <td><input id="employ_type_3" name="employ_type" type="radio" value="4"> 사내추천</td>
+                <td><input id="employ_type_4" name="employ_type" type="radio" value="5"> 재입사</td>
+                <td><input id="employ_type_5" name="employ_type" type="radio" value="6"> 기타</td>
+              </tr>
+		
+			  <tr>
+                <td>소개 및 추천인</td>
+                <td colspan="2">{{ insaform.employ_intro }}</td>
+              </tr>
+			  <tr>                
+                <td>비고</td>
+                <td colspan="2">{{ insaform.employ_etc }}</td>
+              </tr>
+			  <tr>
+                <td rowspan="5">학력</td>               
+                <td colspan="2">학교명</td>
+				<td>학과(계열)</td>
+				<td>졸업여부</td>
+				<td>기간</td>
+              </tr>
+              {{ academic.management_form }}
+              {% for i in academic %}
+              {{ i.id }}
+              <tr>
+                <td colspan="2">{{ i.academic_school_title }}</td>
+                <td>{{ i.academic_school_part }}</td>
+                <td>{{ i.academic_graduated }}</td>
+                <td>{{ i.academic_trial_start }}~{{ i.academic_trial_end }}</td>
+              </tr>
+			  {% endfor %}
+              <tr>
+                <td rowspan="6">경력</td>
+                <td>근무처</td>              
+				<td>직종</td>
+				<td>직위</td>
+				<td>퇴사사유</td>
+				<td>기간</td>
+              </tr>
+              {{ career.management_form }}
+              {% for i in career %}
+              {{ i.id }}
+			  <tr>        
+                <td>{{ i.career_oldjob }}</td>
+				<td>{{ i.career_job_type }}</td>
+				<td>{{ i.career_job_position }}</td>
+				<td>{{ i.career_retire_reason }}</td>
+				<td>{{ i.career_trial_start }}~{{ i.career_trial_end }}</td>
+              </tr>
+			{% endfor %}
+			  <tr>
+				<td rowspan="8">인<br>사<br>발<br>령</td>
+				<td>발령구분</td>
+				<td>발령일자</td>
+				<td>근무부서</td>
+				<td>직급</td>
+				<td>담당업무</td>
+			  </tr>
+			  {{ appoint.management_form }}
+			  {% for i in appoint %}
+			  {{ i.id }}
+			  <tr>
+				<td>{{ i.appoint_type }}</td>
+                <td>{{ i.appoint_apday }}</td>
+				<td>{{ i.appoint_part }}</td>
+				<td>{{ i.appoint_position }}</td>
+				<td>{{ i.appoint_work }}</td>
+			  </tr>
+			  {% endfor %}
+			  <tr>
+				<td>서명</td>
+				<td colspan="5">
+				<br>
+				작성자 : {{ insaform.sign }}
+				<br><br>
+				</td>
+			  </tr>
+			  
+            </tbody>
+          </table>
+        </span>
+    </div>  <!--/container--> 
+
+<div class="row" style="width:1380px">
+
+<span style="float:left">
+          <table class="table table-bordered">
+            <tbody>
+		
+              <tr>
+                <td>구분</td>
+                <td>교육명</td>
+		<td>교육기간</td>
+		<td>교육기관명</td>
+		<td style="border-right-style:double">교육비</td>
+        </tr>
+        {{ edu.management_form }}
+        {% for i in edu %}
+        {{ i.id }}
+		<tr>
+        	<td>{{ i.edu_type }}</td>
+        	<td>{{ i.edu_title }}</td>
+			<td>{{ i.edu_trial_start }}&nbsp;&nbsp;~&nbsp;&nbsp;{{ i.edu_trial_end }}</td>
+			<td>{{ i.edu_organization }}</td>
+			<td>{{ i.edu_cost }}</td>		
+        </tr>
+        {% endfor %}
+            </tbody>
+          </table>
+        </span>
+        <span style="float:left">
+          <table class="table table-bordered">
+            <tbody>
+		
+              <tr>
+                <td>구분</td>
+                <td>교육명</td>
+		<td>교육기간</td>
+		<td>교육기관명</td>
+		<td style="border-right-style:double">교육비</td>
+        </tr>
+        {{ edu2.management_form }}
+        {% for i in edu2 %}
+        {{ i.id }}
+		<tr>
+        	<td>{{ i.edu_type }}</td>
+        	<td>{{ i.edu_title }}</td>
+			<td>{{ i.edu_trial_start }}&nbsp;&nbsp;~&nbsp;&nbsp;{{ i.edu_trial_end }}</td>
+			<td>{{ i.edu_organization }}</td>
+			<td>{{ i.edu_cost }}</td>		
+        </tr>
+        {% endfor %}
+            </tbody>
+          </table>
+        </span>
+		<span style="float:left">
+          <table class="table table-bordered">
+            <tbody>
+		<tr>
+			<td colspan="6">상벌경력</td>
+		</tr>
+		<tr>
+			<td colspan="3">포상</td>
+			<td colspan="3">징계</td>
+		</tr>
+		<tr>
+			<td>날짜</td>
+			<td>종류</td>
+			<td>내용</td>
+			<td>날짜</td>
+			<td>종류</td>
+			<td>내용</td>
+		</tr>
+		{{ rnp.management_form }}
+		{% for i in rnp %}
+		{{ i.id }}
+		<tr>
+			<td>{{ i.rnp_reward_date }}</td>
+			<td>{{ i.rnp_reward_content }}</td>
+			<td>{{ i.rnp_reward_result }}</td>
+			<td>{{ i.rnp_punish_date }}</td>
+			<td>{{ i.rnp_punish_content }}</td>
+			<td>{{ i.rnp_punish_result }}</td>
+		</tr>
+		{% endfor %}
+		</tbody>
+		</table>
+</span>
+
+<span style="float:left">
+          <table class="table table-bordered">
+            <tbody>
+		<tr>
+			<td rowspan="2">
+				퇴직
+			</td>
+			<td>
+				퇴직일자
+			</td>
+			<td>
+				퇴직사유
+			</td>
+		</tr>
+		<tr>
+			
+			<td>
+				{{ insaform.retire_date }}
+			</td>
+			<td>
+				{{ insaform.retire_reason }}
+			</td>
+		</tr>
+		<tr>
+			<td>
+				기타사항
+			</td>
+			<td colspan="2">
+				{{ insaform.etc }}
+			</td>
+		</tr>
+		</tbody>
+	</table>
+</span>
+</div>
+<input type="submit"/>
+</form>
+{% for field in form %}
+    <div class="fieldWrapper">
+        {{ field.errors }}
+        {{ field.label_tag }} {{ field }}
+    </div>
+{% endfor %}
+	</div>
+
+{% endblock %}
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    
+  </body>
+</html>

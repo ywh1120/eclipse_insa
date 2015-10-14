@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="euc-kr">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Theme Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap theme -->
+    <link href="dist/css/bootstrap-theme.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="theme.css" rel="stylesheet">
+	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+  </head>
+<script>
+$(function(){
+	$('.table table-bordered > tbody > tr > td').css('text-align','center');
+	$('#pagerow').css('overflow','scroll');
+});
+</script>
+  <body role="document">
+    <div class="container theme-showcase" role="main">
+      <div class="page-header">
+        <h1>윌스기념병원</h1>
+      </div>
+      <div class="row" id="pagerow">
+	  
+      <div class="row" >
+        <div class="col-md-6" style="padding-right: 0px;">
+          <table class="table table-bordered" style="table-layout:auto;border:1">
+            
+            <tbody>
+              <tr>
+                <td rowspan="7" style="">본<br><br><br><br>인</td>
+                <td>성명</td>
+                <td>한글</td>
+				<td>..</td>
+                <td>영문</td>
+				<td colspan="3">..</td>
+              </tr>
+              <tr>
+                <td>주민등록번호</td>
+                <td colspan="2">851120-1800518</td>
+                <td>성별</td>
+				<td>남</td>
+				<td>결혼여부</td>
+				<td>미혼</td>
+              </tr>
+			  <tr>
+                <td>생년월일</td>
+                <td>(양력,음력)</td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;년&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;월&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;일</td>
+              </tr>
+			  <tr>
+                <td>주소(주민등록)</td>
+                <td>Otto</td>
+                <td>@TwBootstrap</td>
+              </tr>
+			  <tr>
+                <td>주소(실거주지)</td>
+                <td>Otto</td>
+                <td>@TwBootstrap</td>
+              </tr>
+			  <tr>
+                <td>전화번호</td>
+                <td>Otto</td>
+                <td>@TwBootstrap</td>
+              </tr>
+			  <tr>
+                <td>핸드폰</td>
+                <td>Otto</td>
+                <td>@TwBootstrap</td>
+              </tr>
+			  <tr>
+                <td rowspan="2">보훈<br>장애</td>
+                <td>Otto</td>
+                <td>..</td>
+              </tr>
+			  <tr>
+				<td>Otto</td>
+                <td>..</td>
+			  </tr>
+              <tr>
+                <td>2</td>
+                <td>Jacob</td>
+                <td>..</td>
+                <td>@fat</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td colspan="2">Larry the Bird</td>
+                <td>@twitter</td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+
+		<div class="col-md-6" style="padding-left: 0px;">
+          <table class="table table-bordered" style="table-layout:auto">
+           
+            <tbody>
+              <tr>
+                <td rowspan="7">본인</td>
+                <td>성명</td>
+                <td>한글</td>
+                <td>@mdo</td>
+              </tr>
+              <tr>
+                <td>주민등록번호</td>
+                <td>Otto</td>
+                <td>@TwBootstrap</td>
+              </tr>
+			  <tr>
+                <td>생년월일</td>
+                <td>Otto</td>
+                <td>@TwBootstrap</td>
+              </tr>
+			  <tr>
+                <td>주소(주민등록)</td>
+                <td>Otto</td>
+                <td>@TwBootstrap</td>
+              </tr>
+			  <tr>
+                <td>주소(실거주지)</td>
+                <td>Otto</td>
+                <td>@TwBootstrap</td>
+              </tr>
+			  <tr>
+                <td>전화번호</td>
+                <td>Otto</td>
+                <td>@TwBootstrap</td>
+              </tr>
+			  <tr>
+                <td>핸드폰</td>
+                <td>Otto</td>
+                <td>@TwBootstrap</td>
+              </tr>
+			  <tr>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@TwBootstrap</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td colspan="2">Larry the Bird</td>
+                <td>@twitter</td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div> <!-- /container 
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="dist/js/bootstrap.min.js"></script>
+    <script src="assets/js/docs.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>
