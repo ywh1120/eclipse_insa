@@ -3,7 +3,7 @@
 from django import forms
 from insa_record.models import *
 from django.contrib.auth.models import User
-#from datetimewidget.widgets import DateTimeWidget, DateWidget
+from datetimewidget.widgets import DateTimeWidget, DateWidget
 	
 class InsaForm(forms.ModelForm):
 	name_kor = forms.CharField(required=False,widget=forms.TextInput(attrs={'size':'8'}))
