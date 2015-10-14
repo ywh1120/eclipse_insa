@@ -40,7 +40,6 @@ class Myinfo(models.Model):
 	employ_kind = models.CharField(max_length=30)
 	employ_type = models.IntegerField(default=1)
 	employ_intro = models.CharField(max_length=50)
-	employ_etc = models.CharField(max_length=60)
 	emergency_name = models.CharField(max_length=30)
 	emergency_rel = models.CharField(max_length=20)
 	emergency_address = models.CharField(max_length=200)
@@ -49,7 +48,9 @@ class Myinfo(models.Model):
 	retire_date = models.DateField(null=True)
 	retire_reason = models.CharField(max_length=150,null=True)
 	info_image = models.ImageField(null=True,upload_to=generate_filename)
-	etc = models.CharField(max_length=100,null=True)
+	salary_class = models.CharField(max_length=50,null=True)
+	pay_step = models.CharField(max_length=100,null=True)
+	etc = models.CharField(max_length=200,null=True)
 	
 	def delete(self, *args, **kwargs):
 		self.info_image.delete()

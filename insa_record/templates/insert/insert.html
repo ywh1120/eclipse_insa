@@ -254,7 +254,7 @@ $(function(){
 				<td>{{ insaform.employ_kind }}</td>
               </tr>
 			  <tr id="tr_empl1">
-                <td rowspan="4">입사형태</td>
+                <td rowspan="3">입사형태</td>
                 <td><input id="employ_type_0" name="employ_type" type="radio" value="1"> 정규직</td>
                 <td><input id="employ_type_1" name="employ_type" type="radio" value="2"> 계약직</td>
 				<td><input id="employ_type_2" name="employ_type" type="radio" value="3"> 공개채용</td>
@@ -269,9 +269,10 @@ $(function(){
                 <td>소개 및 추천인</td>
                 <td colspan="2">{{ insaform.employ_intro }}</td>
               </tr>
-			  <tr>                
-                <td>비고</td>
-                <td colspan="2">{{ insaform.employ_etc }}</td>
+			  <tr>
+			  	<td>급여현황</td>                
+                
+                <td colspan="3">{{ insaform.salary_class }}급{{ insaform.pay_step }}호봉</td>
               </tr>
 			  <tr>
                 <td rowspan="5">학력</td>               
@@ -463,7 +464,7 @@ $(function(){
 	</table>
 </span>
 </div>
-<input type="submit"/>
+<input type="submit" value="작성완료"/>
 </form>
 {% for field in form %}
     <div class="fieldWrapper">

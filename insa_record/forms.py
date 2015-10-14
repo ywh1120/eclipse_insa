@@ -42,7 +42,8 @@ class InsaForm(forms.ModelForm):
 	employ_day = forms.DateField(required=False,widget=forms.TextInput(attrs={'class':'datepicker','readonly':'true','size':'10'}))
 	#employ_part = forms.CharField(required=False,widget=forms.TextInput(attrs={'size':'8'}))
 	employ_part = forms.ChoiceField(required=False, widget=forms.Select())
-	employ_kind = forms.CharField(required=False,widget=forms.TextInput(attrs={'size':'6'}))
+	employ_kind = forms.ChoiceField(required=False, widget=forms.Select())
+	#employ_kind = forms.CharField(required=False,widget=forms.TextInput(attrs={'size':'6'}))
 	
 	#employ_type = forms.ChoiceField(required=False,widget=forms.RadioSelect())	
 	employ_intro = forms.CharField(required=False)
@@ -58,7 +59,8 @@ class InsaForm(forms.ModelForm):
 	retire_reason = forms.CharField(required=False)
 	info_image = forms.ImageField(required=False,widget=forms.FileInput(attrs={'style':'width:150px'}))
 	etc = forms.CharField(required=False,widget=forms.Textarea(attrs={'cols':'50'}))
-	
+	salary_class = forms.CharField(required=False,widget=forms.TextInput(attrs={'size':'5'}))	
+	pay_step = forms.CharField(required=False,widget=forms.TextInput(attrs={'size':'5'}))	
 	def __init__(self, *args, **kwargs):
 		super(InsaForm, self).__init__(*args, **kwargs)
 		self.fields['birthday_type'].choices = [(1,'양력'),(2,'음력')]
@@ -75,8 +77,11 @@ class InsaForm(forms.ModelForm):
 		self.fields['military_serve'].initial = 1
 		self.fields['military_type'].choices = [(1,'해당없음'),(2,'육군'),(3,'해군'),(4,'공군'),(5,'해병대'),(6,'의무경찰'),(7,'의무소방')]
 		self.fields['military_type'].initial = 1
-		self.fields['employ_part'].choices = [('미지정','미지정'),('의료진','의료진'),('관리과','관리과'),('총무과','총무과'),('원무과','원무과'),('외래간호','외래간호'),('6병동','6병동'),('7병동','7병동'),('운동재활센터','운동재활센터'),('약제과','약제과'),('내과','내과'),('영상의학과','영상의학과'),('임상병리실','임상병리실'),('피부과','피부과'),('비수술센터','비수술센터')]
+		self.fields['employ_part'].choices = [('미지정','미지정'),('의료진','의료진'),('총무과','총무과'),('심사팀','심사팀'),('관리과','관리과'),('홍보실','홍보실'),('원무과','원무과'),('6병동','6병동'),('7병동','7병동'),('외래','외래'),('영상의학과','영상의학과'),('운동센터','운동센터'),('임상병리실','임상병리실'),('상담실','상담실'),('영양실','영양실'),('약국','약국'),('수술실','수술실'),('PA','PA')]
 		self.fields['employ_part'].initial = '미지정'
+		self.fields['employ_kind'].choices = [('미지정','미지정'),('의사','의사'),('간호사','간호사'),('간호조무사','간호조무사'),('기타직','기타직'),('사무직','사무직'),('미화직','미화직'),('경비직','경비직'),('임상병리사','임상병리사'),('영양사','영양사'),('조리사','조리사'),('조리원','조리원'),('약사','약사'),('방사선사','방사선사'),('물리치료사','물리치료사'),('환자이송직','환자이송직')]
+		self.fields['employ_kind'].initial = '미지정'
+		
 		#self.fields['employ_type'].choices = [(1,'정규직'),(2,'계약직'),(3,'공개채용'),(4,'사내추천'),(5,'재입사'),(6,'기타')] 
 	class Meta:
 		model = Myinfo
@@ -84,7 +89,7 @@ class InsaForm(forms.ModelForm):
 #('name_kor','name_eng','civil_code','gender','married','birthday','birthday_type','email','address_civil','address_live','phone','mobile_phone','head_house','house_type','handicap_type','handicap_grade','handicap_trial','handicap_num','handicap_div','military_serve','military_type','military_branch','military_exampt','military_class','employ_day','employ_part','employ_kind','employ_type','employ_intro','employ_etc','emergency_name','emergency_rel','emergency_address','emergency_call','sign','retire_date','retire_reason','info_image','etc',)	
 
 class FamilyForm(forms.ModelForm):
-	family_relation = forms.CharField(required=False,widget=forms.TextInput(attrs={'size':'5'}))
+	family_relation = forms.ChoiceField(required=False, widget=forms.Select())
 	family_name = forms.CharField(required=False,widget=forms.TextInput(attrs={'size':'5'}))
 	family_birthday = forms.DateField(required=False,widget=forms.TextInput(attrs={'class':'datepicker','readonly':'true','size':'10'}))
 	family_academic = forms.CharField(required=False,widget=forms.TextInput(attrs={'size':'5'}))
@@ -94,6 +99,8 @@ class FamilyForm(forms.ModelForm):
 		super(FamilyForm, self).__init__(*args, **kwargs)
 		self.fields['family_together'].choices = [(1,'동거'),(2,'별거')]
 		self.fields['family_together'].initial = 1
+		self.fields['family_relation'].choices = [('미지정','미지정'),('본인','본인'),('부','부'),('모','모'),('자','자'),('형제','형제'),('자매','자매'),('조부','조부'),('조모','조모')]
+		self.fields['family_relation'].initial = '미지정'
 	class Meta:
 		model = Family
 		fields = '__all__'
@@ -104,7 +111,11 @@ class AcademicForm(forms.ModelForm):
 	academic_trial_end = forms.DateField(required=False,widget=forms.TextInput(attrs={'class':'datepicker','readonly':'true','size':'7'}))
 	academic_school_title = forms.CharField(required=False,widget=forms.TextInput(attrs={'size':'15'}))
 	academic_school_part = forms.CharField(required=False,widget=forms.TextInput(attrs={'size':'5'}))
-	academic_graduated = forms.CharField(required=False,widget=forms.TextInput(attrs={'size':'5'}))
+	academic_graduated = forms.ChoiceField(required=False, widget=forms.Select())
+	def __init__(self, *args, **kwargs):
+		super(AcademicForm, self).__init__(*args, **kwargs)
+		self.fields['academic_graduated'].choices = [('졸업','졸업'),('졸업예정','졸업예정'),('검정','검정'),('수료','수료'),('중퇴','중퇴'),('기타','기타')]
+		self.fields['academic_graduated'].initial = '졸업'
 	class Meta:
 		model = Academic
 		fields = '__all__'
