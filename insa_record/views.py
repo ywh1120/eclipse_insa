@@ -96,7 +96,7 @@ def insert(request):
 			return render(request, 'insert/complete.html')
 		else:
 			return render(request, 'insert/error.html', {'errorform':insaform,'fform':fform})		
-	return render(request, 'insert/index.html', 
+	return render(request, 'insert/insert.html', 
 				{'insaform':insaform,
 				'fform':fform,
 				'academic':academic,
@@ -179,10 +179,10 @@ def detail(request, detail_id):
 			return render(request, 'insert/complete.html')
 		else:
 			return render(request, 'insert/error.html', {'errorform':insaform})
-		return render(request, 'insert/index.html', {'myid' : detail_id,
+		return render(request, 'insert/insert.html', {'myid' : detail_id,
 													'insaform' : insaform})
 
-	return render(request, 'insert/index.html', {'myid' : detail_id,
+	return render(request, 'insert/insert.html', {'myid' : detail_id,
 												'insaform' : insaform,
 												'fform' : fform, 
 												'academic':academic,
