@@ -354,7 +354,7 @@ $(function(){
                 <td>교육명</td>
 		<td>교육기간</td>
 		<td>교육기관명</td>
-		<td style="border-right-style:double">교육비</td>
+		<td>교육비</td>
         </tr>
         {{ edu.management_form }}
         {% for i in edu %}
@@ -362,7 +362,7 @@ $(function(){
 		<tr>
         	<td>{{ i.edu_type }}</td>
         	<td>{{ i.edu_title }}</td>
-			<td>{{ i.edu_trial_start }}&nbsp;&nbsp;~&nbsp;&nbsp;{{ i.edu_trial_end }}</td>
+			<td>{{ i.edu_trial_start }}~{{ i.edu_trial_end }}</td>
 			<td>{{ i.edu_organization }}</td>
 			<td>{{ i.edu_cost }}</td>		
         </tr>
@@ -387,7 +387,7 @@ $(function(){
 		<tr>
         	<td>{{ i.edu_type }}</td>
         	<td>{{ i.edu_title }}</td>
-			<td>{{ i.edu_trial_start }}&nbsp;&nbsp;~&nbsp;&nbsp;{{ i.edu_trial_end }}</td>
+			<td>{{ i.edu_trial_start }}~{{ i.edu_trial_end }}</td>
 			<td>{{ i.edu_organization }}</td>
 			<td>{{ i.edu_cost }}</td>		
         </tr>
@@ -444,7 +444,6 @@ $(function(){
 			</td>
 		</tr>
 		<tr>
-			
 			<td>
 				{{ insaform.retire_date }}
 			</td>
@@ -465,13 +464,11 @@ $(function(){
 </span>
 </div>
 <input type="submit" value="작성완료"/>
+{% if myid %}
+<input type="button" value="출력" onclick="location.href='/insa_record/print_page/{{ myid }}/' "/>
+{% endif %}
 </form>
-{% for field in form %}
-    <div class="fieldWrapper">
-        {{ field.errors }}
-        {{ field.label_tag }} {{ field }}
-    </div>
-{% endfor %}
+
 	</div>
 
 {% endblock %}

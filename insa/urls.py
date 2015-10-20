@@ -23,6 +23,7 @@ urlpatterns = [
     url(r'^insa_record/insert/$', views.insert, name='insert'),
     url(r'^insa_record/list/$', views.list, name='list'),
     url(r'^insa_record/detail/(?P<detail_id>\d+)/$', views.detail, name='detail'),
+    url(r'^insa_record/print_page/(?P<detail_id>\d+)/$', views.print_page, name='print_page'),
     url(r'^insa_record/$', views.mainpage, name='main'),
     url(r'^admin/', include(admin.site.urls)),
 ]

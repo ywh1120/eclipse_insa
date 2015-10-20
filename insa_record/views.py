@@ -194,3 +194,24 @@ def detail(request, detail_id):
 												'edu2':edu2,
 												'rnp':rnp})
 
+def print_page(request, detail_id):
+	infodata = Myinfo.objects.get(id = detail_id)#POST에서 인식못함
+	fadata = Family.objects.filter(family_myinfo__id = detail_id)#FK필드값 접근은 언더바 두개
+	acdata = Academic.objects.filter(academic_myinfo__id = detail_id)
+	cadata = Career.objects.filter(career_myinfo__id = detail_id)
+	lidata = License.objects.filter(license_myinfo__id = detail_id)
+	ladata = Language.objects.filter(lang_myinfo__id = detail_id)
+	apdata = Appointment.objects.filter(appoint_myinfo__id = detail_id)
+	edudata = Eduinfo.objects.filter(edu_myinfo__id = detail_id)
+	rnpdata = Rewardnpunish.objects.filter(rnp_myinfo = detail_id)
+	
+	return render(request, 'print/print_page.html', {'myid' : detail_id,
+												'insaform' : infodata,
+												'fform' : fadata, 
+												'academic':acdata,
+												'career':cadata,
+												'license':lidata,
+												'lang':ladata,
+												'appoint':apdata,
+												'edu':edudata,
+												'rnp':rnpdata})

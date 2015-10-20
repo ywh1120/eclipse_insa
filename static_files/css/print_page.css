@@ -1,0 +1,8 @@
+@CHARSET "UTF-8";
+
+@media print{
+	@page {size: landscape}
+	body{
+		
+	}
+}
