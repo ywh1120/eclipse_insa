@@ -77,10 +77,10 @@ class InsaForm(forms.ModelForm):
 		self.fields['military_serve'].initial = 1
 		self.fields['military_type'].choices = [(1,'해당없음'),(2,'육군'),(3,'해군'),(4,'공군'),(5,'해병대'),(6,'의무경찰'),(7,'의무소방')]
 		self.fields['military_type'].initial = 1
-		self.fields['employ_part'].choices = [('미지정','미지정'),('의료진','의료진'),('총무과','총무과'),('심사팀','심사팀'),('관리과','관리과'),('홍보실','홍보실'),('원무과','원무과'),('6병동','6병동'),('7병동','7병동'),('외래','외래'),('영상의학과','영상의학과'),('운동센터','운동센터'),('임상병리실','임상병리실'),('상담실','상담실'),('영양실','영양실'),('약국','약국'),('수술실','수술실'),('PA','PA')]
-		self.fields['employ_part'].initial = '미지정'
-		self.fields['employ_kind'].choices = [('미지정','미지정'),('의사','의사'),('간호사','간호사'),('간호조무사','간호조무사'),('기타직','기타직'),('사무직','사무직'),('미화직','미화직'),('경비직','경비직'),('임상병리사','임상병리사'),('영양사','영양사'),('조리사','조리사'),('조리원','조리원'),('약사','약사'),('방사선사','방사선사'),('물리치료사','물리치료사'),('환자이송직','환자이송직')]
-		self.fields['employ_kind'].initial = '미지정'
+		self.fields['employ_part'].choices = [('','미지정'),('의료진','의료진'),('총무과','총무과'),('심사팀','심사팀'),('관리과','관리과'),('홍보실','홍보실'),('원무과','원무과'),('6병동','6병동'),('7병동','7병동'),('외래','외래'),('영상의학과','영상의학과'),('운동센터','운동센터'),('임상병리실','임상병리실'),('상담실','상담실'),('영양실','영양실'),('약국','약국'),('수술실','수술실'),('PA','PA')]
+		self.fields['employ_part'].initial = ''
+		self.fields['employ_kind'].choices = [('','미지정'),('의사','의사'),('간호사','간호사'),('간호조무사','간호조무사'),('기타직','기타직'),('사무직','사무직'),('미화직','미화직'),('경비직','경비직'),('임상병리사','임상병리사'),('영양사','영양사'),('조리사','조리사'),('조리원','조리원'),('약사','약사'),('방사선사','방사선사'),('물리치료사','물리치료사'),('환자이송직','환자이송직')]
+		self.fields['employ_kind'].initial = ''
 		
 		#self.fields['employ_type'].choices = [(1,'정규직'),(2,'계약직'),(3,'공개채용'),(4,'사내추천'),(5,'재입사'),(6,'기타')] 
 	class Meta:
@@ -97,10 +97,10 @@ class FamilyForm(forms.ModelForm):
 	family_together = forms.ChoiceField(required=False, widget=forms.Select())
 	def __init__(self, *args, **kwargs):
 		super(FamilyForm, self).__init__(*args, **kwargs)
-		self.fields['family_together'].choices = [(0,'미지정'),(1,'동거'),(2,'별거')]
-		self.fields['family_together'].initial = 0
-		self.fields['family_relation'].choices = [('미지정','미지정'),('본인','본인'),('부','부'),('모','모'),('자','자'),('형제','형제'),('자매','자매'),('조부','조부'),('조모','조모')]
-		self.fields['family_relation'].initial = '미지정'
+		self.fields['family_together'].choices = [('','미지정'),('동거','동거'),('별거','별거')]
+		self.fields['family_together'].initial = ''
+		self.fields['family_relation'].choices = [('','미지정'),('본인','본인'),('부','부'),('모','모'),('자','자'),('형제','형제'),('자매','자매'),('조부','조부'),('조모','조모')]
+		self.fields['family_relation'].initial = ''
 	class Meta:
 		model = Family
 		fields = '__all__'
@@ -114,8 +114,8 @@ class AcademicForm(forms.ModelForm):
 	academic_graduated = forms.ChoiceField(required=False, widget=forms.Select())
 	def __init__(self, *args, **kwargs):
 		super(AcademicForm, self).__init__(*args, **kwargs)
-		self.fields['academic_graduated'].choices = [('미지정','미지정'),('졸업','졸업'),('졸업예정','졸업예정'),('검정','검정'),('수료','수료'),('중퇴','중퇴'),('기타','기타')]
-		self.fields['academic_graduated'].initial = '미지정'
+		self.fields['academic_graduated'].choices = [('','미지정'),('졸업','졸업'),('졸업예정','졸업예정'),('검정','검정'),('수료','수료'),('중퇴','중퇴'),('기타','기타')]
+		self.fields['academic_graduated'].initial = ''
 	class Meta:
 		model = Academic
 		fields = '__all__'
@@ -164,20 +164,25 @@ class AppointmentForm(forms.ModelForm):
 	appoint_work = forms.CharField(required=False,widget=forms.TextInput(attrs={'size':'20'}))
 	def __init__(self, *args, **kwargs):
 		super(AppointmentForm, self).__init__(*args, **kwargs)
-		self.fields['appoint_position'].choices = [('미지정','미지정'),('사원','사원'),('주임','주임'),('계장','계장'),('대리','대리'),('실장','실장'),('과장','과장'),('수간호사','수간호사'),('책임간호사','책임간호사'),('약국장','약국장'),('원장','원장'),('부원장','부원장'),('기타','기타'),('별정','별정')]
-		self.fields['appoint_position'].initial = '미지정'
+		self.fields['appoint_position'].choices = [('','미지정'),('사원','사원'),('주임','주임'),('계장','계장'),('대리','대리'),('실장','실장'),('과장','과장'),('수간호사','수간호사'),('책임간호사','책임간호사'),('약국장','약국장'),('원장','원장'),('부원장','부원장'),('기타','기타'),('별정','별정')]
+		self.fields['appoint_position'].initial = ''
 	class Meta:
 		model = Appointment
 		fields = '__all__'
 		exclude = ('appoint_myinfo',)
 
 class EduinfoForm(forms.ModelForm):
-	edu_type = forms.CharField(required=False,widget=forms.TextInput(attrs={'size':'5'}))
+	#edu_type = forms.CharField(required=False,widget=forms.TextInput(attrs={'size':'5'}))
+	edu_type = forms.ChoiceField(required=False, widget=forms.Select())
 	edu_title = forms.CharField(required=False,widget=forms.TextInput(attrs={'size':'5'}))
 	edu_trial_start = forms.DateField(required=False,widget=forms.TextInput(attrs={'class':'datepicker','readonly':'true','size':'10'}))
 	edu_trial_end = forms.DateField(required=False,widget=forms.TextInput(attrs={'class':'datepicker','readonly':'true','size':'10'}))
 	edu_organization = forms.CharField(required=False,widget=forms.TextInput(attrs={'size':'5'}))
 	edu_cost = forms.CharField(required=False,widget=forms.TextInput(attrs={'size':'5'}))
+	def __init__(self, *args, **kwargs):
+		super(EduinfoForm, self).__init__(*args, **kwargs)
+		self.fields['edu_type'].choices = [('','미지정'),('필수','필수'),('선택','선택')]
+		self.fields['edu_type'].initial = ''
 	class Meta:
 		model = Eduinfo
 		fields = '__all__'

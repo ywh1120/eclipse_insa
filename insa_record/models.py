@@ -124,7 +124,9 @@ class Eduinfo(models.Model):
 	edu_organization = models.CharField(max_length=60,null=True)
 	edu_cost = models.IntegerField(default=0,null=True)
 
-
+	def __unicode__(self) : 
+		return self.edu_myinfo.civil_code
+	
 class Rewardnpunish(models.Model):
 	rnp_myinfo = models.ForeignKey(Myinfo,null=True)
 	rnp_reward_date = models.CharField(max_length=80,null=True)

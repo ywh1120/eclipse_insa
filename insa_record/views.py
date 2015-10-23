@@ -109,8 +109,9 @@ def insert(request):
 				'rnp':rnp})
 
 def list(request):
+	insaform = InsaForm()
 	list = Myinfo.objects.all()
-	return render(request, 'list/list.html', {'list':list})
+	return render(request, 'list/list.html', {'list':list,'insaform':insaform})
 
 def mainpage(request):
 	return render(request, 'index.html')
@@ -125,6 +126,7 @@ def detail(request, detail_id):
 	ladata = Language.objects.filter(lang_myinfo__id = detail_id)
 	apdata = Appointment.objects.filter(appoint_myinfo__id = detail_id)
 	edudata = Eduinfo.objects.filter(edu_myinfo__id = detail_id)
+	edudata2 = Eduinfo.objects.filter(edu_myinfo__id = detail_id)
 	rnpdata = Rewardnpunish.objects.filter(rnp_myinfo = detail_id)
 	#폼생성영역
 	
@@ -136,6 +138,7 @@ def detail(request, detail_id):
 	languagelist = modelformset_factory(Language, LanguageForm, extra=2, max_num=2)
 	appointlist = modelformset_factory(Appointment, AppointmentForm, extra=7, max_num=7)
 	edulist = modelformset_factory(Eduinfo, EduinfoForm, extra=13, max_num=13)
+	edulist2 = modelformset_factory(Eduinfo, EduinfoForm, extra=13, max_num=13)
 	rnplist = modelformset_factory(Rewardnpunish, RewardnpunishForm, extra=7, max_num=7)
 	
 	#inlineformset_factory(parent_model, model, form, formset, fk_name, fields, exclude, extra, can_order, can_delete, max_num, formfield_callback, widgets, validate_max, localized_fields, labels, help_texts, error_messages, min_num, validate_min)
@@ -147,7 +150,7 @@ def detail(request, detail_id):
 		language = detail_load(languagelist,ladata,LanguageForm, 'lang')
 		appoint = detail_load(appointlist,apdata,AppointmentForm, 'appoint')
 		edu = detail_load(edulist,edudata,EduinfoForm, 'edu')
-		edu2 = detail_load(edulist,edudata,EduinfoForm, 'edu2')
+		edu2 = detail_load(edulist2,edudata2,EduinfoForm, 'edu2')
 		rnp = detail_load(rnplist,rnpdata,RewardnpunishForm, 'rnp')
 	elif request.method == "POST":
 		insaform = InsaForm(request.POST, instance=infodata)
@@ -163,7 +166,7 @@ def detail(request, detail_id):
 			language = languagelist(request.POST,prefix='lang',queryset=ladata)
 			appoint = appointlist(request.POST,prefix='appoint',queryset=apdata)
 			edu = edulist(request.POST,prefix='edu',queryset=edudata)
-			edu2 = edulist(request.POST,prefix='edu2',queryset=edudata)
+			edu2 = edulist2(request.POST,prefix='edu2',queryset=edudata2)
 			rnp = rnplist(request.POST,prefix='rnp',queryset=rnpdata)
 			
 			save_formset(fform, request, update, 'family')
@@ -202,7 +205,8 @@ def print_page(request, detail_id):
 	lidata = License.objects.filter(license_myinfo__id = detail_id)
 	ladata = Language.objects.filter(lang_myinfo__id = detail_id)
 	apdata = Appointment.objects.filter(appoint_myinfo__id = detail_id)
-	edudata = Eduinfo.objects.filter(edu_myinfo__id = detail_id)
+	edudata = Eduinfo.objects.filter(edu_myinfo__id = detail_id)[:13]
+	edudata2 = Eduinfo.objects.filter(edu_myinfo__id = detail_id)[13:26]
 	rnpdata = Rewardnpunish.objects.filter(rnp_myinfo = detail_id)
 	
 	return render(request, 'print/print_page.html', {'myid' : detail_id,
@@ -214,4 +218,5 @@ def print_page(request, detail_id):
 												'lang':ladata,
 												'appoint':apdata,
 												'edu':edudata,
+												'edu2':edudata2,
 												'rnp':rnpdata})
